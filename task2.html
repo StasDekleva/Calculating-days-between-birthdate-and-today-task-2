@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Calculating days between birthdate and today</title>
+  </head>
+  <body>
+    <label for="birthdate">Enter your birthdate in the format DD.MM.YYYY:</label>
+    <input type="text" id="birthdate" name="birthdate">
+    <button onclick="calculateDays()">Calculate Days</button>
+    <p id="rezultat"></p>
+    <script>
+      function calculateDays() {
+        var birthdateInput = document.getElementById("birthdate").value;
+        var day = parseInt(birthdateInput.split(".")[0]);
+        var month = parseInt(birthdateInput.split(".")[1]);
+        var year = parseInt(birthdateInput.split(".")[2]);
+        var birthdate = new Date(year, month - 1, day);
+        var today = new Date();
+        var differenceInTime = today.getTime() - birthdate.getTime();
+        var differenceInDays = Math.floor(differenceInTime / (1000 * 3600 * 24));
+        document.getElementById("rezultat").innerHTML = "You are " + differenceInDays + " days old.";
+      }
+    </script>
+  </body>
+</html>
